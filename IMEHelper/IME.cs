@@ -37,8 +37,9 @@ namespace JLChnToZ.IMEHelper {
             _nativeWnd.onCandidatesReceived += (s, e) => { if (onCandidatesReceived != null) onCandidatesReceived(s, e); };
             _nativeWnd.onCompositionReceived += (s, e) => { if (onCompositionReceived != null) onCompositionReceived(s, e); };
             _nativeWnd.onResultReceived += (s, e) => { if (onResultReceived != null) onResultReceived(s, e); };
-            game.Exiting += (s, e) => this.Dispose();
-            game.Disposed += (s, e) => this.Dispose();
+            // Compatible with monogame 3.8.2, Game.Exiting event changes the signature, we should always register the event outside of IMEHandler
+            //game.Exiting += (s, e) => this.Dispose();
+            //game.Disposed += (s, e) => this.Dispose();
         }
 
         /// <summary>
